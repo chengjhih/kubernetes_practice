@@ -1,0 +1,126 @@
+<!DOCTYPE html>
+<html lang="en" >
+<head>
+	<meta charset="UTF-8">
+	<title>jQuery Flow Chart Example</title> 
+  <link rel='stylesheet prefetch' href='css/jquery.flowchart.css'>
+  <link rel='stylesheet prefetch' href='css/jquery-ui.css'>
+	<link rel="stylesheet" href="css/style.css">
+	<script src='plugins/jquery-1.12.1.js'></script>
+	<script src='plugins/jquery-ui.js'></script>
+	<script src='plugins/jquery.flowchart.js'></script>
+	<script src="plugins/jquery.mousewheel.min.js"></script>
+	<script src="plugins/jquery.panzoom.min.js"></script>
+  <script src="plugins/interact.min.js"></script>
+  <script src="plugins/esprima.min.js"></script>
+  <script src="plugins/js-yaml.min.js"></script>
+  <script src="js/index.js"></script>
+</head>
+<body>
+<div class="flowchart-example">
+  <div id="middle_window">
+    <div class='container_class' id="chart_container">
+      <div class="flowchart-example-container" id="example"></div>
+      <div class='more_info_block' id="statusInfo"></div>
+      <div class='render_info' id="renderInfo">
+        <button id="render_button">render</button>
+        <button id="download_button">download</button>
+        <button id="save_project_button">save</button>
+        <input type="file" id="import_project_button"/>
+        <input type='button' id='btnLoad' style="background-color: #4C44a0; color: #FFFFFF; height: 20px;text-align: center; display: inline-block; font-size: 16px; border: none;" value='import'>
+      </div>
+    </div>
+    <div class="draggable_operators">
+      <div class="draggable_operators_divs">
+        <div class="draggable_operator" data-nb-inputs="0" data-nb-outputs="3">Ingress</div>
+        <div class="draggable_operator" data-nb-inputs="3" data-nb-outputs="3">Service</div>
+        <div class="draggable_operator" data-nb-inputs="3" data-nb-outputs="1">Deployment</div>
+        <div class="draggable_operator" data-nb-inputs="1" data-nb-outputs="3">Pod</div>
+        <div class="draggable_operator" data-nb-inputs="3" data-nb-outputs="1" data-nb-mount="3">Container</div>
+        <div class="draggable_operator" data-nb-inputs="1" data-nb-outputs="0">Image</div>
+        <div class="draggable_operator" data-nb-inputs="0" data-nb-outputs="0">Namespace</div>
+        <div class="draggable_operator" data-nb-inputs="1" data-nb-outputs="0">Secret</div>
+        <div class="draggable_operator" data-nb-inputs="1" data-nb-outputs="0">ConfigMap</div>
+        <div class="draggable_operator" data-nb-inputs="0" data-nb-outputs="0">AzureKeyVaultSecret</div>
+        <div class="draggable_operator" data-nb-inputs="0" data-nb-outputs="0">Certificate</div>
+        <div class="draggable_operator" data-nb-inputs="0" data-nb-outputs="0">ClusterIssuer</div>
+        <div class="draggable_operator" data-nb-inputs="0" data-nb-outputs="0">StorageClass</div>
+        <div class="draggable_operator" data-nb-inputs="1" data-nb-outputs="1">Volume</div>
+        <div class="draggable_operator" data-nb-inputs="1" data-nb-outputs="0">PersistentVolumeClaim</div>
+        <div class="draggable_operator" data-nb-inputs="0" data-nb-outputs="0">PersistentVolume</div>
+      </div>
+    </div>
+    <button class="delete_selected_button">Delete selected object / link</button>  
+  </div>
+  <div id="right_column">
+    <div id="operator_properties">
+      <section class="title_container_operator">
+        Name
+        <br />
+        <input type="text" id="operator_title" />
+      </section>
+      <select size="3" id="select_namespace""> 
+        <option value="namespace" selected>small</option> 
+        <option value="mediumNamespace">medium</option> 
+        <option value="largeNamespace">large</option> 
+      </select> 
+      <section class="container_operator" id="section_left_right">
+        <div id="operator_left">
+          Object Left Input
+          <br />
+          <input type="text" id="operator_input_1" />
+          <br />
+          <input type="text" id="operator_input_2" />
+          <br />
+          <input type="text" id="operator_input_3" />
+          <br />
+        </div>
+        <div id="operator_right">
+          Object Right Input
+          <br />
+          <input type="text" id="operator_output_1" />
+          <br />
+          <input type="text" id="operator_output_2" />
+          <br />
+          <input type="text" id="operator_output_3" />
+          <br />
+        </div>
+      </section>
+      <section class="keyValuePairs" id="section_keyValue">
+        Key-Value Pair for Labels
+        <br />
+        <input type="text" id="operatorLabelKey1" />
+        <input type="text" id="operatorLabelValue1" />
+        <br />
+        <input type="text" id="operatorLabelKey2" />
+        <input type="text" id="operatorLabelValue2" />
+        <br />
+        <input type="text" id="operatorLabelKey3" />
+        <input type="text" id="operatorLabelValue3" />
+      </section>
+      <section class="keyValuePairs" id="section_keyValue_ann">
+        Key-Value Pair for Annotations
+        <br />
+        <input type="text" id="operatorLabelKey1_ann" />
+        <input type="text" id="operatorLabelValue1_ann" />
+        <br />
+        <input type="text" id="operatorLabelKey2_ann" />
+        <input type="text" id="operatorLabelValue2_ann" />
+        <br />
+        <input type="text" id="operatorLabelKey3_ann" />
+        <input type="text" id="operatorLabelValue3_ann" />
+      </section>
+      <section id="section_attribute">
+      </section>
+    </div>
+    <div id="usage">
+      <section id="usage_section">
+      </section>
+    </div>
+  </div>
+  <div id="link_properties">
+    <label for="link_color">Link's color: </label><input type="color" id="link_color" />
+  </div>
+</div>
+</body>
+</html>

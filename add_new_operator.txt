@@ -1,0 +1,13 @@
+add new operator
+1. add new operator (either initialization or add new)
+2. mouse hover --> append atttribute to status info
+3. mouse select --> 
+4. block specific space
+5. append to attribute section (listener also added here, except new div is declared then we add that in 6th step)
+6. add listener to div place (optional)
+7. render to yaml
+8. usage
+
+
+
+### uncomment lines in css/jquery.flowchart.css to enable css for different types

@@ -1,0 +1,286 @@
+#middle_window {
+  float:left;
+  width: 800px;
+  height: 100%;
+}
+
+#render_button {
+  background-color: #4CAF50;
+  border: none;
+  color: white;
+  width: 90px;
+  height: 20px;
+  text-align: center;
+  display: inline-block;
+  font-size: 16px;
+}
+
+#download_button {
+  background-color: #4C6650;
+  border: none;
+  color: white;
+  width: 90px;
+  height: 20px;
+  text-align: center;
+  display: inline-block;
+  font-size: 16px;
+}
+
+#save_project_button {
+  background-color: #4C4470;
+  border: none;
+  color: white;
+  width: 60px;
+  height: 20px;
+  text-align: center;
+  display: inline-block;
+  font-size: 16px;
+}
+
+#import_project_button {
+  background-color: #4C44a0;
+  border: none;
+  color: white;
+  width: 200px;
+  height: 20px;
+  text-align: center;
+  display: inline-block;
+  font-size: 16px;
+}
+
+.namespace {
+  background-color: #7C2F50;
+  position: absolute;
+  opacity: 0.3;
+  width: 1400px;
+  height: 0px;
+  resize: both;
+  padding-bottom: 700px;
+  overflow: auto;
+}
+
+.mediumNamespace {
+  background-color: #7C2F50;
+  position: absolute;
+  opacity: 0.3;
+  width: 1800px;
+  height: 0px;
+  resize: both;
+  padding-bottom: 900px;
+  overflow: auto;
+}
+
+.largeNamespace {
+  background-color: #7C2F50;
+  position: absolute;
+  opacity: 0.3;
+  width: 2200px;
+  height: 0px;
+  resize: both;
+  padding-bottom: 1100px;
+  overflow: auto;
+}
+
+.storageclass {
+  background-color: #0C7F50;
+  position: absolute;
+  opacity: 0.3;
+  width: 800px;
+  height: 0px;
+  resize: both;
+  padding-bottom: 400px;
+  overflow: auto;
+}
+
+.mediumStorageclass {
+  background-color: #0C7F50;
+  position: absolute;
+  opacity: 0.3;
+  width: 1200px;
+  height: 0px;
+  resize: both;
+  padding-bottom: 600px;
+  overflow: auto;
+}
+
+.largeStorageclass {
+  background-color: #0C7F50;
+  position: absolute;
+  opacity: 0.3;
+  width: 1600px;
+  height: 0px;
+  resize: both;
+  padding-bottom: 800px;
+  overflow: auto;
+}
+
+.container_class {
+  color: block;
+  width: 100px;
+  border: 1px solid green;
+  position: relative;
+}
+
+.keyValuePairs {
+  border-style: double;
+  text-align: center;
+}
+
+.more_info_block {
+  font-size: 1px;
+  color: blue;
+  width: 200px;
+  height: 200px;
+  border: 2px solid black;
+  position: absolute;
+  top: 0px;
+  right: 0px;
+}
+
+.render_info {
+  color: black;
+  width: 800px;
+  height: 20px;
+  border: 0px solid black;
+  position: absolute;
+  bottom: 0px;
+  left: 0px;
+}
+
+.title_container_operator {
+  border-style: double;
+  text-align: center;
+}
+
+.container_operator {
+  border-style: double;
+}
+
+#section_attribute {
+  border-style: double;
+}
+
+#operator_left {
+  display: table-cell;
+  text-align: center;
+  vertical-align: middle;
+  width: 50%;
+  padding: 1rem;
+}
+
+#operator_right {
+  display: table-cell;
+  text-align: center;
+  vertical-align: middle;
+  width: 50%;
+  padding: 1rem;
+}
+
+.flowchart-example-container {
+  height: 200px;
+  border: 1px solid #BBB;
+  margin-bottom: 10px;
+}
+
+.flowchart-operator-connector-arrow {
+  top: 4px;
+}
+
+.flowchart-operator-connector-small-arrow {
+  top: 9px;
+}
+
+.flowchart-example pre {
+  display: none;
+}
+
+#create_operator {
+  margin-bottom: 10px;
+}
+
+.flowchart-example-event {
+  margin-top: 10px;
+  margin-bottom: 10px;
+  color: #3366FF;
+}
+
+#flowchart_data {
+  width: 100%;
+  margin-top: 20px;
+  margin-bottom: 40px;
+  height: 140px;
+}
+
+h4 {
+  margin-top: 40px;
+}
+
+#right_column {
+  height: 600px;
+  overflow: auto;
+  border: 2px solid;
+}
+
+#usage {
+  text-align: center;
+  border: 2px solid;
+  height: 300px;
+  overflow: auto;
+}
+
+#operator_properties, #link_properties {
+  display: none;
+  border: 2px solid;
+  height: 300px;
+  overflow: auto;
+}
+
+#example {
+  width: 20000px;
+  height: 20000px;
+  background: white;
+}
+
+#chart_container {
+  width: 100%;
+  height: 500px;
+  overflow: hidden;
+  background: repeating-linear-gradient(
+    45deg,
+    #eee,
+    #eee 10px,
+    #e5e5e5 10px,
+    #e5e5e5 20px
+  );
+  border: 1px solid black;
+}
+
+.draggable_operator {
+  display: inline-block;
+  padding: 2px 5px 2px 5px;
+  border: 1px solid #ccc;
+  cursor: grab;
+  -webkit-touch-callout: none; /* iOS Safari */
+  -webkit-user-select: none;   /* Chrome/Safari/Opera */
+  -khtml-user-select: none;    /* Konqueror */
+  -moz-user-select: none;      /* Firefox */
+  -ms-user-select: none;       /* IE/Edge */
+  user-select: none;           /* non-prefixed version, currently
+                                  not supported by any browser */
+}
+
+.draggable_operators {
+  margin-top: 10px;
+}
+
+.draggable_operators_label {
+  margin-bottom: 5px;
+}
+
+.draggable_operators_divs {
+  margin-bottom: 0px;
+}
+
+.delete_selected_button {
+  margin-bottom: 0px;
+}

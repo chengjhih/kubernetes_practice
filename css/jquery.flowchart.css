@@ -1,0 +1,476 @@
+
+
+.flowchart-container {
+    position: relative;
+    overflow: hidden;
+}
+
+.flowchart-links-layer, .flowchart-operators-layer, .flowchart-temporary-link-layer {
+    position: absolute;
+    top: 0px;
+    left: 0px;
+    width: 100%;
+    height: 100%;
+}
+
+.flowchart-operators-layer, .flowchart-temporary-link-layer {
+    pointer-events: none;
+}
+
+.flowchart-temporary-link-layer {
+    display: none;
+}
+
+
+
+.flowchart-link, .flowchart-operator {
+    cursor: default;
+}
+
+
+.flowchart-operator-connector {
+    position: relative;
+    padding-top: 5px;
+    padding-bottom: 5px;
+}
+
+.flowchart-operator-connector-label {
+    font-size: small;
+}
+
+.flowchart-operator-inputs .flowchart-operator-connector-label {
+    margin-left: 14px;
+}
+
+.flowchart-operator-outputs .flowchart-operator-connector-label {
+    text-align: right;
+    margin-right: 5px;
+}
+
+.flowchart-operator-connector-arrow {
+    width: 0px;
+    height: 0px;
+    border-top: 10px solid transparent;
+    border-bottom: 10px solid transparent;
+    border-left: 10px solid rgb(204, 204, 204);
+    position: absolute;
+    top: 0px;
+}
+
+.flowchart-operator-connector-small-arrow {
+    width: 0px;
+    height: 0px;
+    border-top: 5px solid transparent;
+    border-bottom: 5px solid transparent;
+    border-left: 5px solid transparent; /*rgb(100, 100, 100);*/
+    position: absolute;
+    top: 5px;
+    pointer-events: none;
+}
+
+.flowchart-operator-connector:hover .flowchart-operator-connector-arrow {
+    border-left: 10px solid rgb(153, 153, 153);
+}
+
+.flowchart-operator-inputs .flowchart-operator-connector-arrow {
+    left: -1px;
+}
+
+.flowchart-operator-outputs .flowchart-operator-connector-arrow {
+    right: -10px;
+}
+
+/* add mount */
+.flowchart-operator-volume-mount .flowchart-operator-connector-arrow {
+    left: 50px;
+    bottom: 0px;
+}
+
+.flowchart-operator-inputs .flowchart-operator-connector-small-arrow {
+    left: -7px;
+}
+
+.flowchart-operator-outputs .flowchart-operator-connector-small-arrow {
+    right: -7px;
+}
+
+/* add mount */
+.flowchart-operator-volume-mount .flowchart-operator-connector-small-arrow {
+    left: 52px;
+    bottom: 0px;
+}
+
+.unselectable {
+   -moz-user-select: none;
+   -khtml-user-select: none;
+   -webkit-user-select: none;
+
+   /*
+     Introduced in IE 10.
+     See http://ie.microsoft.com/testdrive/HTML5/msUserSelect/
+   */
+   -ms-user-select: none;
+   user-select: none;
+}
+
+
+/* Default Operator */
+
+.flowchart-operator {
+    position: absolute;
+    width: 200px;
+    border: 1px solid #CCCCCC;
+    background: #FAFAFA;
+    pointer-events: initial;
+}
+
+.flowchart-operator.hover {
+    border-color: #999;
+}
+
+.flowchart-operator.selected {
+    border-color: #555;
+}
+
+.flowchart-operator .flowchart-operator-title {
+    width: 100%;
+    padding: 3px;
+    font-weight: bold;
+    box-sizing: border-box;
+    border-bottom: 1px solid #DDDDDD;
+    background: #F0F0F0;
+    height: auto;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    cursor: move;
+}
+
+.flowchart-operator .flowchart-operator-inputs-outputs {
+    display: table;
+    width: 100%;
+    margin-top: 5px;
+    margin-bottom: 5px;
+}
+
+.flowchart-operator .flowchart-operator-inputs, .flowchart-default-operator .flowchart-operator-outputs .flowchart-operator-mount {
+    display: table-cell;
+    width: 50%;
+}
+
+/*
+.flowchart-operator.pod {
+    border-radius: 50%;
+    background-color: #00AF30;
+}
+
+.flowchart-operator-title.pod {
+    width: 100%;
+    border-radius: 35px;
+    border-color: #111;
+    border-width: 1px;
+    text-align: center;
+    align-items: center;
+    background-color: #F00000;
+}
+
+.flowchart-operator.azurekeyvaultsecret {
+    background-image: url("../images/keyvault.png");
+    background-position: center -24px;
+    border-radius: 50%;
+    height: 200px;
+}
+
+.flowchart-operator-title.azurekeyvaultsecret {
+    width: 100%;
+    border-radius: 35px;
+    border-color: #111;
+    border-width: 1px;
+    text-align: center;
+    align-items: center;
+    background-color: #00F000;
+}
+
+.flowchart-operator.certificate {
+    background-image: url("../images/certificate.png");
+    background-position: center 30px;
+    border-radius: 50px 50px 10px 10px;
+    height: 170px;
+    width: 180px
+}
+
+.flowchart-operator-title.certificate {
+    width: 100%;
+    border-radius: 35px;
+    border-color: #111;
+    border-width: 1px;
+    text-align: center;
+    color: #FFFFFF;
+    align-items: center;
+    background-color: #007000;
+}
+
+.flowchart-operator.clusterissuer {
+    background-image: url("../images/clusterissuer.png");
+    background-position: center 30px;
+    background-repeat: no-repeat; 
+    height: 170px;
+    width: 180px;
+    background-color: rgba(0, 0, 0, 0);
+    border-radius: 50px 50px 10px 10px;
+    clip-path: polygon(50% 0%, 100% 0%, 100% 17%, 67% 17%, 87% 63%, 80% 82%, 
+                50% 100%, 20% 82%, 13% 63%, 33% 17%,  0% 17%, 0% 0%);
+}
+
+.flowchart-operator-title.clusterissuer {
+    width: 100%;
+    border-radius: 35px;
+    border-color: #111;
+    border-width: 1px;
+    text-align: center;
+    color: #FFFFFF;
+    align-items: center;
+    background-color: #000060;
+}
+
+.flowchart-operator.secret {
+    background-image: url("../images/secret.png");
+    background-position: center 30px;
+    background-repeat: no-repeat; 
+    height: 128px;
+    width: 190px;
+    background-color: rgba(0, 0, 0, 0);
+    border-color: rgba(0, 0, 0, 0);
+    border-radius: 50px 50px 10px 10px;
+}
+
+.flowchart-operator-title.secret {
+    width: 100%;
+    border-radius: 35px;
+    border-color: #111;
+    border-width: 1px;
+    text-align: center;
+    color: #FFFFFF;
+    align-items: center;
+    background-color: #600000;
+}
+
+.flowchart-operator.configmap {
+    background-image: url("../images/configmap.png");
+    background-position: center 30px;
+    background-repeat: no-repeat; 
+    height: 130px;
+    width: 200px;
+    background-color: rgba(0, 0, 0, 0);
+    border-color: rgba(0, 0, 0, 0);
+    border-radius: 50px 50px 10px 10px;
+}
+
+.flowchart-operator-title.configmap {
+    width: 100%;
+    border-radius: 35px;
+    border-color: #111;
+    border-width: 1px;
+    text-align: center;
+    color: #FFFFFF;
+    align-items: center;
+    background-color: #600000;
+}
+
+.flowchart-operator.image {
+    background-image: url("../images/image.png");
+    background-position: center 30px;
+    background-repeat: no-repeat; 
+    height: 160px;
+    width: 200px;
+    background-color: rgba(0, 0, 0, 0);
+    border-color: rgba(0, 0, 0, 0);
+    border-radius: 50px 50px 10px 10px;
+}
+
+.flowchart-operator-title.image {
+    width: 100%;
+    border-radius: 35px;
+    border-color: #111;
+    border-width: 1px;
+    text-align: center;
+    color: #FFFFFF;
+    align-items: center;
+    background-color: #606000;
+}
+
+.flowchart-operator.container {
+    background-image: url("../images/container.png");
+    background-position: center 30px;
+    background-repeat: no-repeat; 
+    height: 160px;
+    width: 200px;
+    background-color: rgba(0, 0, 0, 0);
+    border-color: rgba(0, 0, 0, 0);
+    border-radius: 50px 50px 10px 10px;
+}
+
+.flowchart-operator-title.container {
+    width: 100%;
+    border-radius: 35px;
+    border-color: #111;
+    border-width: 1px;
+    text-align: center;
+    color: #FFFFFF;
+    align-items: center;
+    background-color: #006060;
+}
+
+.flowchart-operator-inputs.container {
+    color: #0000FF;
+}
+
+.flowchart-operator.deployment {
+    background-image: url("../images/deployment.png");
+    background-position: center 30px;
+    background-repeat: no-repeat; 
+    height: 160px;
+    width: 200px;
+    background-color: rgba(0, 0, 0, 0);
+    border-color: rgba(0, 0, 0, 0);
+    border-radius: 50px 50px 10px 10px;
+}
+
+.flowchart-operator-title.deployment {
+    width: 100%;
+    border-radius: 35px;
+    border-color: #111;
+    border-width: 1px;
+    text-align: center;
+    color: #FFFFFF;
+    align-items: center;
+    background-color: #606060;
+}
+
+.flowchart-operator-inputs.deployment {
+    color: #FF0000;
+}
+
+.flowchart-operator-outputs.deployment {
+    color: #FF0000;
+}
+
+.flowchart-operator.service {
+    background-image: url("../images/service.png");
+    background-position: center 30px;
+    background-repeat: no-repeat; 
+    height: 160px;
+    width: 200px;
+    background-color: rgba(0, 0, 0, 0);
+    border-color: rgba(0, 0, 0, 0);
+    border-radius: 50px 50px 10px 10px;
+}
+
+.flowchart-operator-title.service {
+    width: 100%;
+    border-radius: 35px;
+    border-color: #111;
+    border-width: 1px;
+    text-align: center;
+    color: #FFFFFF;
+    align-items: center;
+    background-color: #001090;
+}
+
+.flowchart-operator-inputs.service {
+    color: #000000;
+}
+
+.flowchart-operator-outputs.service {
+    color: #00007F;
+}
+
+.flowchart-operator.ingress {
+    background-image: url("../images/ingress.png");
+    background-position: center 30px;
+    background-repeat: no-repeat; 
+    height: 180px;
+    width: 180px;
+    background-color: rgba(0, 0, 0, 0);
+    border-color: rgba(0, 0, 0, 0);
+    border-radius: 50px 50px 10px 10px;
+}
+
+.flowchart-operator-title.ingress {
+    width: 100%;
+    border-radius: 35px;
+    border-color: #111;
+    border-width: 1px;
+    text-align: center;
+    color: #FFFFFF;
+    align-items: center;
+    background-color: #F06060;
+}
+
+.flowchart-operator.persistentvolume {
+    background-image: url("../images/PV.png");
+    background-position: center 25px;
+    background-repeat: no-repeat; 
+    height: 180px;
+    width: 180px;
+    background-color: rgba(0, 0, 0, 0);
+    border-color: rgba(0, 0, 0, 0);
+    border-radius: 50px 50px 10px 10px;
+}
+
+.flowchart-operator-title.persistentvolume {
+    width: 100%;
+    border-radius: 35px;
+    border-color: #111;
+    border-width: 1px;
+    text-align: center;
+    color: #FFFFFF;
+    align-items: center;
+    background-color: #F00060;
+}
+
+.flowchart-operator.persistentvolumeclaim {
+    background-image: url("../images/PVC.png");
+    background-position: center 25px;
+    background-repeat: no-repeat; 
+    height: 180px;
+    width: 180px;
+    background-color: rgba(0, 0, 0, 0);
+    border-color: rgba(0, 0, 0, 0);
+    border-radius: 50px 50px 10px 10px;
+}
+
+.flowchart-operator-title.persistentvolumeclaim {
+    width: 100%;
+    border-radius: 35px;
+    border-color: #111;
+    border-width: 1px;
+    text-align: center;
+    color: #FFFFFF;
+    align-items: center;
+    background-color: #7000B0;
+}
+
+.flowchart-operator.volume {
+    background-image: url("../images/volume.png");
+    background-position: center 30px;
+    background-repeat: no-repeat; 
+    height: 120px;
+    width: 200px;
+    background-color: rgba(0, 0, 0, 0);
+    border-color: rgba(0, 0, 0, 0);
+    border-radius: 50px 50px 10px 10px;
+}
+
+.flowchart-operator-title.volume {
+    width: 100%;
+    border-radius: 35px;
+    border-color: #111;
+    border-width: 1px;
+    text-align: center;
+    color: #FFFFFF;
+    align-items: center;
+    background-color: #700090;
+}
+
+*/
